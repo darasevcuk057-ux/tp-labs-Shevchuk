@@ -1,10 +1,11 @@
 ﻿// Лабораторная работа 1. Вариант 7.
-// Задание 1 — факториал числа n;
+// Задание 1 — факториал числа n (бонус: BigInteger, без ограничения n <= 20);
 // Задание 2 — числа Фибоначчи от 0 до n;
 // Задание 3 — функция A = cth(cbrt(x^2)) * exp(sinh(x^5 + 13));
 // Задание 4 — ряд Тейлора для cos x.
 
 using System.Globalization;
+using System.Numerics;
 
 const double Eps = 1e-6;    // точность суммирования ряда (задание 4)
 
@@ -36,12 +37,13 @@ while (running)
 
 static void Task1()
 {
-    Console.Write("Задание 1. Введите n (0..20): ");
+    Console.Write("Задание 1. Введите n (0..1000): ");
 
-    // 21! уже не помещается в long, поэтому n ограничено сверху.
-    if (!int.TryParse(Console.ReadLine(), out int n) || n < 0 || n > 20)
+    // Бонусное задание 1: BigInteger вместо long — ограничение n <= 20
+    // снято (21! уже не помещается в long).
+    if (!int.TryParse(Console.ReadLine(), out int n) || n < 0 || n > 1000)
     {
-        Console.WriteLine("Ошибка: нужно целое число от 0 до 20.");
+        Console.WriteLine("Ошибка: нужно целое число от 0 до 1000.");
         return;
     }
 
@@ -49,9 +51,9 @@ static void Task1()
 }
 
 // Факториал: произведение 1 * 2 * ... * n. При n = 0 результат равен 1.
-static long Factorial(int n)
+static BigInteger Factorial(int n)
 {
-    long result = 1;
+    BigInteger result = BigInteger.One;
 
     for (int i = 2; i <= n; i++)
         result *= i;
