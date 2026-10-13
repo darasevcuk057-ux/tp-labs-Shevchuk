@@ -16,7 +16,7 @@ public abstract class Person
 
     public override string ToString()
     {
-        return $"{GetType().Name}: Name={Name}, Department={Department}";
+        return $"{GetType().Name}: ФИО={Name}, Дисциплина={Department}";
     }
 
     // Статический метод поиска по кафедре
@@ -39,7 +39,7 @@ public class Student : Person
 
     public override string ToString()
     {
-        return base.ToString() + $", AverageScore={AverageScore:F2}";
+        return base.ToString() + $", Средний балл={AverageScore:F2}";
     }
 }
 
@@ -56,7 +56,7 @@ public class Teacher : Person
 
     public override string ToString()
     {
-        return base.ToString() + $", Workload={Workload} ч/week";
+        return base.ToString() + $", Кол-во часов ={Workload} кол-во/ч";
     }
 }
 
@@ -73,7 +73,7 @@ public class Postgrad : Person
 
     public override string ToString()
     {
-        return base.ToString() + $", ResearchTopic={ResearchTopic}";
+        return base.ToString() + $", Тема исследования={ResearchTopic}";
     }
 }
 
@@ -87,7 +87,7 @@ internal class Program
         {
             new Student("Анна Смирнова", "Компьютерные науки", 4.8),
             new Student("Борис Петросян", "Математика", 4.3),
-            new Teacher("Дмитрий Ivanov", "Физика", 12),
+            new Teacher("Дмитрий Иванов", "Физика", 12),
             new Teacher("Елена Соколова", "Компьютерные науки", 15),
             new Postgrad("Игорь Николаев", "Химия", "Квантовые вычисления"),
             new Postgrad("Мария Ковалева", "Химия", "Синтетические методы")
@@ -113,7 +113,7 @@ internal class Program
         Console.WriteLine("\n=== Нагрузка преподавателей ===");
         var teachers = people.OfType<Teacher>();
         foreach (var t in teachers)
-            Console.WriteLine($"{t.Name} — {t.Workload} ч/week");
+            Console.WriteLine($"{t.Name} — {t.Workload} ч");
 
         Console.WriteLine("\nНажмите Enter для выхода.");
         Console.ReadLine();
