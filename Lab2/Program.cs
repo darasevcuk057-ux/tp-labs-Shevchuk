@@ -93,24 +93,24 @@ internal class Program
             new Postgrad("Мария Ковалева", "Химия", "Синтетические методы")
         };
 
-        Console.WriteLine("=== Список всех людей ===");
+        Console.WriteLine(" Список всех людей");
         foreach (var p in people)
             Console.WriteLine(p);
 
         // Поиск по кафедре "Компьютерные науки"
-        Console.WriteLine("\n=== Поиск по кафедре 'Компьютерные науки' ===");
+        Console.WriteLine("\nПоиск по кафедре 'Компьютерные науки'");
         var csPeople = Person.SearchByDepartment(people, "Компьютерные науки");
         foreach (var p in csPeople)
             Console.WriteLine(p);
 
         // Вычисление среднего балла среди студентов
-        Console.WriteLine("\n=== Средний балл среди студентов ===");
+        Console.WriteLine("\n Средний балл среди студентов");
         var students = people.OfType<Student>();
         double avg = students.Average(s => s.AverageScore);
         Console.WriteLine($"Средний балл: {avg:F2}");
 
         // Вывод информации о нагрузке преподавателей
-        Console.WriteLine("\n=== Нагрузка преподавателей ===");
+        Console.WriteLine("\nНагрузка преподавателей");
         var teachers = people.OfType<Teacher>();
         foreach (var t in teachers)
             Console.WriteLine($"{t.Name} — {t.Workload} ч");
