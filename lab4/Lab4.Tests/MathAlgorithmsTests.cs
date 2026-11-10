@@ -85,6 +85,15 @@ public class MathAlgorithmsTests
         Assert.False(double.IsInfinity(result));
     }
 
+    [Fact]
+    public void FunctionA_OverflowX_ReturnsError()
+    {
+        // x = 1: sinh(14) очень большое, exp(sinh(14)) переполняется.
+        double result = MathAlgorithms.FunctionA(1, out string? error);
+        Assert.True(double.IsNaN(result));
+        Assert.NotNull(error);
+    }
+
     // --- Ряд Тейлора для cos ---
 
     [Fact]
