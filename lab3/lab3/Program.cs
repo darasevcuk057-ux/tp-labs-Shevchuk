@@ -12,17 +12,14 @@ internal static class Program
         Console.OutputEncoding = Encoding.UTF8;
         Console.InputEncoding = Encoding.UTF8;
 
-        Console.WriteLine("Лабораторная работа №3. Вариант №7.");
-        Console.WriteLine("Слияние всех .txt-файлов указанной папки.");
-
         bool isRunning = true;
 
         while (isRunning)
         {
             Console.WriteLine();
-            Console.WriteLine("========== МЕНЮ ==========");
-            Console.WriteLine("1 — Объединить .txt-файлы");
-            Console.WriteLine("0 — Выйти");
+            Console.WriteLine(" МЕНЮ ");
+            Console.WriteLine("1 - Объединить .txt-файлы");
+            Console.WriteLine("0 - Выйти");
             Console.Write("Ваш выбор: ");
 
             // При Ctrl+Z / окончании входного потока программа завершит работу.
@@ -109,13 +106,9 @@ internal static class Program
         {
             Console.WriteLine($"Ошибка ввода-вывода: {ex.Message}");
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Непредвиденная ошибка: {ex.Message}");
-        }
-    }
+       }
 
-    // Убираем кавычки, которые Windows добавляет при команде
+    // Убираем кавычки, которые винд добавляет при команде
     // «Копировать как путь».
     private static string ReadPath()
     {
