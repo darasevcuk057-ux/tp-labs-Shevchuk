@@ -124,6 +124,23 @@ public class UniversityTests
         Assert.Empty(found);
     }
 
+    // Бонус 1: поиск по кафедре должен находить записи независимо от регистра.
+    // В лаб 2 было p.Department == dept — точное сравнение с учётом регистра.
+    // Тест выявил: поиск "компьютерные науки" не находил "Компьютерные науки".
+    [Fact]
+    public void SearchByDepartment_DifferentCase_FindsMatch()
+    {
+        var people = new List<Person>
+        {
+            new Student("Анна", "Компьютерные науки", 4.8),
+            new Student("Борис", "Математика", 4.3),
+        };
+
+        var found = Person.SearchByDepartment(people, "компьютерные науки");
+        Assert.Single(found);
+        Assert.Equal("Анна", found[0].Name);
+    }
+
     // --- ToString ---
 
     [Theory]

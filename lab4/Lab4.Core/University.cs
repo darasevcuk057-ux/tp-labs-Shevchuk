@@ -22,10 +22,12 @@ public abstract class Person
         return $"{GetType().Name}: Name={Name}, Department={Department}";
     }
 
-    // Поиск людей по кафедре.
+    // Поиск людей по кафедре (без учёта регистра — см. бонус 1).
     public static List<Person> SearchByDepartment(List<Person> people, string dept)
     {
-        return people.Where(p => p.Department == dept).ToList();
+        return people
+            .Where(p => string.Equals(p.Department, dept, StringComparison.OrdinalIgnoreCase))
+            .ToList();
     }
 }
 
