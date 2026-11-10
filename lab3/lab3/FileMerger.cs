@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 namespace Lab3;
 
 // Логика слияния файлов вынесена в отдельный класс.
-// Здесь нет Console.ReadLine/WriteLine — только работа с файлами.
+// Здесь нет Console.ReadLine/WriteLine 
 public static class FileMerger
 {
     public const string DefaultOutputFileName = "merged_result.txt";
 
-    private const string Separator =
-        "============================================================";
-
-    // Бонусное задание №1: метод асинхронный.
-    // Бонусное задание №2: файлы читаются построчно через StreamReader,
-    // поэтому в память не загружаются целиком — можно сливать большие файлы.
+    // Бонусное задание 1: метод асинхронный.
+    // Бонусное задание 2: файлы читаются построчно через StreamReader,
+    // поэтому в память не загружаются целиком - можно сливать большие файлы.
     public static async Task<int> MergeTxtFilesAsync(
         string sourceDirectory,
         string outputFilePath)
@@ -106,14 +103,11 @@ public static class FileMerger
 
         foreach (string inputFile in inputFiles)
         {
-            // Перед содержимым каждого файла — разделитель с его именем.
-            await writer.WriteLineAsync(Separator);
+            
             await writer.WriteLineAsync($"Файл: {Path.GetFileName(inputFile)}");
-            await writer.WriteLineAsync(Separator);
-
+          
             using var reader = new StreamReader(
                 inputFile,
-                Encoding.UTF8,
                 detectEncodingFromByteOrderMarks: true);
 
             string? line;
